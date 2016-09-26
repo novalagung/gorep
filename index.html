@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Gorep by novalagung</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Gorep</h1>
+      <h2 class="project-tagline">Simple app to replace imported package name in golang project</h2>
+      <a href="https://github.com/novalagung/gorep" class="btn">View on GitHub</a>
+      <a href="https://github.com/novalagung/gorep/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/novalagung/gorep/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="gorep" class="anchor" href="#gorep" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>gorep</h1>
+
+<p>Simple tools to replace imported package name in golang project. Useful to manage a project which deployed into multiple application on one server.</p>
+
+<p>Please continue reading, you'll understand what is the purpose of this library</p>
+
+<h2>
+<a id="story" class="anchor" href="#story" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Story</h2>
+
+<p>This package is only useful when:</p>
+
+<ol>
+<li>You are not using <a href="https://blog.gopheracademy.com/advent-2015/vendor-folder/">golang vendor</a>
+</li>
+<li>Your project is deployed as multiple app in one server</li>
+</ol>
+
+<p>Say that you have a project which the package path is <code>github.com/novalagung/project</code>. This project deployed to server as 3 different environment (one for <em>testing</em>, one for <em>dev</em>, one for <em>production</em>).</p>
+
+<div class="highlight highlight-source-shell"><pre>+ <span class="pl-smi">$GOPATH</span>
+   + src
+      + github.com
+         + novalagung
+            + project
+                - main.go
+                - file_a.go
+                - file_b.go
+                - file_c.go
+                - ... other files, tons
+            + project-dev
+            + project-test
+   + bin
+   + pkg</pre></div>
+
+<p>When you want to build the <code>project-dev</code> and <code>project-test</code>, you have to change imported package names in all files inside each folder.</p>
+
+<div class="highlight highlight-source-go"><pre><span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project/model<span class="pl-pds">"</span></span>
+<span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project/controller<span class="pl-pds">"</span></span>
+<span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project/conf<span class="pl-pds">"</span></span>
+<span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project/view<span class="pl-pds">"</span></span>
+<span class="pl-c">// ... and so oon, in all files</span></pre></div>
+
+<p>need to be replaced into this for the <code>project-dev</code>, as well as <code>project-test</code></p>
+
+<div class="highlight highlight-source-go"><pre><span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project-dev/model<span class="pl-pds">"</span></span>
+<span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project-dev/controller<span class="pl-pds">"</span></span>
+<span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project-dev/conf<span class="pl-pds">"</span></span>
+<span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project-dev/view<span class="pl-pds">"</span></span></pre></div>
+
+<p>It'll waste your time so much, espesially if there are tons of file inside. TONS!. This simple library could be your life-saver.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<pre><code>go get github.com/novalagung/gorep
+</code></pre>
+
+<p>Make sure <code>$GOPATH/bin</code> is added to your <code>$PATH</code> variable.</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Go to your project folder, then run this</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c1">cd</span> <span class="pl-smi">$GOPATH</span>/src/github.com/novalagung/project-dev
+gorep -from=<span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project<span class="pl-pds">"</span></span> -to=<span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project-dev<span class="pl-pds">"</span></span>
+
+<span class="pl-c"># or gorep path="." -from="github.com/novalagung/project" -to="github.com/novalagung/project-dev"</span></pre></div>
+
+<p>Or use flag <code>-path</code> to specify the project location</p>
+
+<div class="highlight highlight-source-shell"><pre>gorep -path=<span class="pl-s"><span class="pl-pds">"</span>/User/novalagung/goapp/src/github.com/novalagung/project-dev<span class="pl-pds">"</span></span> -from=<span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project<span class="pl-pds">"</span></span> -to=<span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project-dev<span class="pl-pds">"</span></span></pre></div>
+
+<p>Flag <code>-from</code> filled with package name you want to replace. Flag <code>-to</code> is the new name. All files which contains <code>github.com/novalagung/project</code> inside those choosen folder will be replaced with <code>github.com/novalagung/project-dev</code>.</p>
+
+<h2>
+<a id="author" class="anchor" href="#author" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Author</h2>
+
+<p>Noval Agung Prayogo</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>MIT</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/novalagung/gorep">Gorep</a> is maintained by <a href="https://github.com/novalagung">novalagung</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
