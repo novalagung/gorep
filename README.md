@@ -1,6 +1,6 @@
 # gorep
 
-Simple app to replace imported package name in golang project. Useful to manage a project which deployed into multiple application on one server.
+Simple tools to replace imported package name in golang project. Useful to manage a project which deployed into multiple application on one server.
 
 Please continue reading, you'll understand what is the purpose of this library
 
