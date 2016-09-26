@@ -1,8 +1,8 @@
 # gorep
 
-Simple app to replace imported package name in golang project. Useful to manage imported package name of a project which deployed into multiple application on one server.
+Simple app to replace imported package name in golang project. Useful to manage a project which deployed into multiple application on one server.
 
-Please continue reading, you'll understand.
+Please continue reading, you'll understand what is the purpose of this library
 
 ## Story
 
@@ -11,7 +11,7 @@ This package is only useful when:
  1. You are not using [golang vendor](https://blog.gopheracademy.com/advent-2015/vendor-folder/)
  2. Your project is deployed as multiple app in one server
 
-Say that you have a project which the package path is `github.com/novalagung/project`. You deployed this project on server as 3 different app (one for testing, one for dev, one for production).
+Say that you have a project which the package path is `github.com/novalagung/project`. This project deployed to server as 3 different environment (one for *testing*, one for *dev*, one for *production*).
 
 ```bash
 + $GOPATH
@@ -23,7 +23,7 @@ Say that you have a project which the package path is `github.com/novalagung/pro
                 - file_a.go
                 - file_b.go
                 - file_c.go
-                - other files ...
+                - ... other files, tons
             + project-dev
             + project-test
    + bin
@@ -49,7 +49,7 @@ import "github.com/novalagung/project-dev/conf"
 import "github.com/novalagung/project-dev/view"
 ```
 
-It'll waste your time so much. So this simple library could be your life-saver.
+It'll waste your time so much, espesially if there are tons of file inside. TONS!. This simple library could be your life-saver.
 
 ## Installation
 
@@ -67,7 +67,7 @@ Go to your project folder, then run this
 cd $GOPATH/src/github.com/novalagung/project-dev
 gorep -from="github.com/novalagung/project" -to="github.com/novalagung/project-dev"
 
-# or $GOPATH/bin/gorep path="." -from="eaciit/x10-dev" -to="eaciit/x10"
+# or gorep path="." -from="github.com/novalagung/project" -to="github.com/novalagung/project-dev"
 ```
 
 Or use flag `-path` to specify the project location
@@ -76,7 +76,7 @@ Or use flag `-path` to specify the project location
 gorep -path="/User/novalagung/goapp/src/github.com/novalagung/project-dev" -from="github.com/novalagung/project" -to="github.com/novalagung/project-dev"
 ```
 
-flag `-from` is the package you want to replace `-to` is the new name. All files which contains `github.com/novalagung/project` inside those folder will be replaced with `github.com/novalagung/project-dev`.
+Flag `-from` filled with package name you want to replace. Flag `-to` is the new name. All files which contains `github.com/novalagung/project` inside those choosen folder will be replaced with `github.com/novalagung/project-dev`.
 
 ## Author
 
