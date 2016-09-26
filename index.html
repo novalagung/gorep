@@ -93,7 +93,13 @@ gorep -from=<span class="pl-s"><span class="pl-pds">"</span>github.com/novalagun
 
 <div class="highlight highlight-source-shell"><pre>gorep -path=<span class="pl-s"><span class="pl-pds">"</span>/User/novalagung/goapp/src/github.com/novalagung/project-dev<span class="pl-pds">"</span></span> -from=<span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project<span class="pl-pds">"</span></span> -to=<span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project-dev<span class="pl-pds">"</span></span></pre></div>
 
-<p>Flag <code>-from</code> filled with package name you want to replace. Flag <code>-to</code> is the new name. All files which contains <code>github.com/novalagung/project</code> inside those choosen folder will be replaced with <code>github.com/novalagung/project-dev</code>.</p>
+<p>All files which contains <code>github.com/novalagung/project</code> inside those choosen folder will be replaced with <code>github.com/novalagung/project-dev</code>.</p>
+
+<ul>
+<li>Flag <code>-from</code> filled with package name you want to replace</li>
+<li>Flag <code>-to</code> is the new name</li>
+<li>Flag <code>-from</code> (optional) is the project path you want to hack. By default it'll be current active directory </li>
+</ul>
 
 <h2>
 <a id="author" class="anchor" href="#author" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Author</h2>
