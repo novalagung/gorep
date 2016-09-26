@@ -24,9 +24,7 @@
 
 <p>Simple tools to replace imported package name in golang project. Useful to manage a project which deployed into multiple application on one server.</p>
 
-<p>Please continue reading, you'll understand what is the purpose of this library.</p>
-
-<p><img src="https://cloud.githubusercontent.com/assets/982868/18839228/6d1bddbc-8434-11e6-8822-661adc484f04.png" alt="Gorep - Simple tools to replace imported package name in golang project" align="right"></p>
+<p>Please continue reading, you'll understand what is the purpose of this library</p>
 
 <h2>
 <a id="story" class="anchor" href="#story" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Story</h2>
@@ -41,20 +39,7 @@
 
 <p>Say that you have a project which the package path is <code>github.com/novalagung/project</code>. This project deployed to server as 3 different environment (one for <em>testing</em>, one for <em>dev</em>, one for <em>production</em>).</p>
 
-<div class="highlight highlight-source-shell"><pre>+ <span class="pl-smi">$GOPATH</span>
-   + src
-      + github.com
-         + novalagung
-            + project
-                - main.go
-                - file_a.go
-                - file_b.go
-                - file_c.go
-                - ... other files, tons
-            + project-dev
-            + project-test
-   + bin
-   + pkg</pre></div>
+<p><img width="476" alt="screen shot 2016-09-26 at 10 03 12 pm" src="https://cloud.githubusercontent.com/assets/982868/18839396/11ca5fdc-8435-11e6-83d1-7d7331e00268.png" align="center"></p>
 
 <p>When you want to build the <code>project-dev</code> and <code>project-test</code>, you have to change imported package names in all files inside each folder.</p>
 
