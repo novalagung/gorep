@@ -66,7 +66,7 @@ All files which contains `github.com/novalagung/project` inside those choosen fo
 
  - Flag `-from` filled with package name you want to replace
  - Flag `-to` is the new name
- - Flag `-flag` (optional) is the project path you want to hack. By default it'll be current active directory 
+ - Flag `-path` (optional) is the project path you want to hack. By default it'll be current active directory 
 
 ## Author
 
