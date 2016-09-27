@@ -72,20 +72,21 @@
 <p>Go to your project folder, then run this</p>
 
 <div class="highlight highlight-source-shell"><pre><span class="pl-c1">cd</span> <span class="pl-smi">$GOPATH</span>/src/github.com/novalagung/project-dev
-gorep -from=<span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project<span class="pl-pds">"</span></span> -to=<span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project-dev<span class="pl-pds">"</span></span>
-
-<span class="pl-c"># or gorep path="." -from="github.com/novalagung/project" -to="github.com/novalagung/project-dev"</span></pre></div>
+gorep -from=<span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project<span class="pl-pds">"</span></span> <span class="pl-cce">\ </span>
+      -to=<span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project-dev<span class="pl-pds">"</span></span></pre></div>
 
 <p>Or use flag <code>-path</code> to specify the project location</p>
 
-<div class="highlight highlight-source-shell"><pre>gorep -path=<span class="pl-s"><span class="pl-pds">"</span>/User/novalagung/goapp/src/github.com/novalagung/project-dev<span class="pl-pds">"</span></span> -from=<span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project<span class="pl-pds">"</span></span> -to=<span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project-dev<span class="pl-pds">"</span></span></pre></div>
+<div class="highlight highlight-source-shell"><pre>gorep -path=<span class="pl-s"><span class="pl-pds">"</span>/User/novalagung/goapp/src/github.com/novalagung/project-dev<span class="pl-pds">"</span></span> \
+      -from=<span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project<span class="pl-pds">"</span></span> \
+      -to=<span class="pl-s"><span class="pl-pds">"</span>github.com/novalagung/project-dev<span class="pl-pds">"</span></span></pre></div>
 
 <p>All files which contains <code>github.com/novalagung/project</code> inside those choosen folder will be replaced with <code>github.com/novalagung/project-dev</code>.</p>
 
 <ul>
 <li>Flag <code>-from</code> filled with package name you want to replace</li>
 <li>Flag <code>-to</code> is the new name</li>
-<li>Flag <code>-from</code> (optional) is the project path you want to hack. By default it'll be current active directory </li>
+<li>Flag <code>-flag</code> (optional) is the project path you want to hack. By default it'll be current active directory </li>
 </ul>
 
 <h2>
