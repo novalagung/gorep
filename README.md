@@ -65,22 +65,23 @@ Go to your project folder, then run this
 
 ```bash
 cd $GOPATH/src/github.com/novalagung/project-dev
-gorep -from="github.com/novalagung/project" -to="github.com/novalagung/project-dev"
-
-# or gorep path="." -from="github.com/novalagung/project" -to="github.com/novalagung/project-dev"
+gorep -from="github.com/novalagung/project" \ 
+      -to="github.com/novalagung/project-dev"
 ```
 
 Or use flag `-path` to specify the project location
 
 ```bash
-gorep -path="/User/novalagung/goapp/src/github.com/novalagung/project-dev" -from="github.com/novalagung/project" -to="github.com/novalagung/project-dev"
+gorep -path="/User/novalagung/goapp/src/github.com/novalagung/project-dev" \
+      -from="github.com/novalagung/project" \
+      -to="github.com/novalagung/project-dev"
 ```
 
 All files which contains `github.com/novalagung/project` inside those choosen folder will be replaced with `github.com/novalagung/project-dev`.
 
  - Flag `-from` filled with package name you want to replace
  - Flag `-to` is the new name
- - Flag `-from` (optional) is the project path you want to hack. By default it'll be current active directory 
+ - Flag `-flag` (optional) is the project path you want to hack. By default it'll be current active directory 
 
 ## Author
 
