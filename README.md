@@ -13,22 +13,7 @@ This package is only useful when:
 
 Say that you have a project which the package path is `github.com/novalagung/project`. This project deployed to server as 3 different environment (one for *testing*, one for *dev*, one for *production*).
 
-```bash
-+ $GOPATH
-   + src
-      + github.com
-         + novalagung
-            + project
-                - main.go
-                - file_a.go
-                - file_b.go
-                - file_c.go
-                - ... other files, tons
-            + project-dev
-            + project-test
-   + bin
-   + pkg
-```
+<img width="476" alt="screen shot 2016-09-26 at 10 03 12 pm" src="https://cloud.githubusercontent.com/assets/982868/18839396/11ca5fdc-8435-11e6-83d1-7d7331e00268.png" alt="Gorep - Simple tools to replace imported package name in golang project" align="center">
 
 When you want to build the `project-dev` and `project-test`, you have to change imported package names in all files inside each folder.
 
